@@ -7,8 +7,6 @@ from pathlib import Path
 from typing import Dict, List, Optional
 from pydantic import BaseModel, Field
 
-logger = logging.getLogger(__name__)
-
 
 class Education(BaseModel):
     """Education entry"""
@@ -89,11 +87,11 @@ class ProfileManager:
             base_dir.parent / "profiles_backup"  # when backend/ is the working dir
         ]
         found = [d for d in candidates if d.exists()]
-        logger.info(f"ProfileManager: searching for backup dirs, base_dir={base_dir}")
-        logger.info(f"ProfileManager: checked {len(candidates)} candidates, found {len(found)}")
+        logging.info(f"ProfileManager: searching for backup dirs, base_dir={base_dir}")
+        logging.info(f"ProfileManager: checked {len(candidates)} candidates, found {len(found)}")
         for d in found:
             files = list(d.glob("*.json"))
-            logger.info(f"  Backup dir: {d.absolute()} ({len(files)} json files)")
+            logging.info(f"  Backup dir: {d.absolute()} ({len(files)} json files)")
         return found
     
     def create_profile(self, profile_name: str, profile: UserProfile, replace: bool = False) -> tuple[Path, str]:
@@ -165,18 +163,18 @@ class ProfileManager:
     def list_profiles(self) -> List[str]:
         """List all available profiles"""
         names = [p.stem for p in self.profiles_dir.glob("*.json")]
-        logger.info(f"list_profiles: found {len(names)} in {self.profiles_dir}: {names}")
+        logging.info(f"list_profiles: found {len(names)} in {self.profiles_dir}: {names}")
         if names:
             return names
 
         # Fallback: if no profiles have been created yet, list any backups
-        logger.info(f"list_profiles: falling back to {len(self._backup_dirs)} backup dirs")
+        logging.info(f"list_profiles: falling back to {len(self._backup_dirs)} backup dirs")
         for backup_dir in self._backup_dirs:
             backup_names = [p.stem for p in backup_dir.glob("*.json")]
-            logger.info(f"  Backup dir {backup_dir}: {len(backup_names)} profiles: {backup_names}")
+            logging.info(f"  Backup dir {backup_dir}: {len(backup_names)} profiles: {backup_names}")
             if backup_names:
                 return backup_names
-        logger.warning("list_profiles: no profiles found anywhere, returning []")
+        logging.warning("list_profiles: no profiles found anywhere, returning []")
         return []
     
     def delete_profile(self, profile_name: str) -> bool:
