@@ -48,6 +48,42 @@ export default function Home() {
     : [];
 
   useEffect(() => {
+    try {
+      if (typeof window === "undefined") return;
+      const stored = window.localStorage.getItem("ojogbonResumeHistory");
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        const normalized = parsed.map((item: any) => ({
+          ...item,
+          timestamp: new Date(item.timestamp),
+        }));
+        setResumeHistory(normalized);
+      }
+    } catch (err) {
+      console.error("Failed to load resume history from localStorage:", err);
+    }
+  }, []);
+
+  useEffect(() => {
+    try {
+      if (typeof window === "undefined") return;
+      const serializable = resumeHistory.map((item) => ({
+        ...item,
+        timestamp:
+          item.timestamp instanceof Date
+            ? item.timestamp.toISOString()
+            : item.timestamp,
+      }));
+      window.localStorage.setItem(
+        "ojogbonResumeHistory",
+        JSON.stringify(serializable)
+      );
+    } catch (err) {
+      console.error("Failed to save resume history to localStorage:", err);
+    }
+  }, [resumeHistory]);
+
+  useEffect(() => {
     loadProfiles();
     if (isLocalBackend) {
       checkApiKey();
