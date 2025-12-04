@@ -40,6 +40,8 @@ export default function Home() {
   const [contactEmail, setContactEmail] = useState("");
   const [contactMessage, setContactMessage] = useState("");
 
+  const [showHistoryDrawer, setShowHistoryDrawer] = useState(false);
+
   // Filter resume history by currently selected profile so histories don't leak across profiles
   const profileHistory = currentProfile
     ? resumeHistory.filter((item) => item.profileName === currentProfile)
@@ -354,6 +356,16 @@ export default function Home() {
                     <div className="text-xs text-red-600 mr-2">No profiles found</div>
                   )}
                   
+                  {/* Mobile History Button */}
+                  <button
+                    type="button"
+                    onClick={() => setShowHistoryDrawer(true)}
+                    className="sm:hidden h-10 px-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 flex items-center justify-center"
+                    title="View resume history"
+                  >
+                    <History className="h-4 w-4" />
+                  </button>
+
                   {/* Profile Dropdown */}
                   <select
                     className="h-10 pl-3 pr-10 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white min-w-[200px] cursor-pointer hover:bg-gray-50 transition-colors"
@@ -389,7 +401,7 @@ export default function Home() {
                     title="Edit your profile information"
                   >
                     <Edit className="h-4 w-4" />
-                    <span>Edit Profile</span>
+                    <span className="hidden md:inline">Edit Profile</span>
                   </button>
 
                   {/* New Profile Button */}
@@ -424,8 +436,8 @@ export default function Home() {
 
       {/* Main Content with History Sidebar */}
       <div className="flex flex-col lg:flex-row flex-1">
-        {/* History Sidebar */}
-        <aside className="w-full lg:w-80 bg-white border-b lg:border-b-0 lg:border-r border-gray-200 overflow-y-auto">
+        {/* History Sidebar - desktop only; mobile uses drawer */}
+        <aside className="hidden lg:block w-80 bg-white border-r border-gray-200 overflow-y-auto">
           <div className="p-4 border-b border-gray-200">
             <div className="flex items-center space-x-2">
               <History className="h-5 w-5 text-gray-600" />
@@ -467,6 +479,65 @@ export default function Home() {
             )}
           </div>
         </aside>
+
+        {/* Mobile History Drawer */}
+        {showHistoryDrawer && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 z-40 flex lg:hidden">
+            <div className="bg-white w-80 max-w-[85%] h-full shadow-xl p-4 flex flex-col">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center space-x-2">
+                  <History className="h-5 w-5 text-gray-600" />
+                  <h2 className="font-semibold text-gray-900 text-sm">Resume History</h2>
+                </div>
+                <button
+                  onClick={() => setShowHistoryDrawer(false)}
+                  className="text-gray-400 hover:text-gray-600"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+
+              <div className="flex-1 space-y-2 overflow-y-auto">
+                {profileHistory.length === 0 ? (
+                  <div className="text-center py-8 text-gray-500">
+                    <History className="h-10 w-10 mx-auto mb-3 text-gray-300" />
+                    <p className="text-sm">No resumes generated yet</p>
+                    <p className="text-xs mt-1">Your history will appear here</p>
+                  </div>
+                ) : (
+                  profileHistory.map((item) => (
+                    <div
+                      key={item.id}
+                      onClick={() => {
+                        setJobDescription(item.jobDescription);
+                        setGeneratedResume(item.resume);
+                        setShowHistoryDrawer(false);
+                      }}
+                      className="p-3 bg-gray-50 hover:bg-gray-100 rounded-lg cursor-pointer border border-gray-200 transition-colors"
+                    >
+                      <div className="flex items-start justify-between mb-2">
+                        <h3 className="font-medium text-sm text-gray-900 line-clamp-1">
+                          {item.companyName || "Company"}
+                        </h3>
+                        <Clock className="h-3 w-3 text-gray-400 flex-shrink-0 ml-2" />
+                      </div>
+                      <p className="text-xs text-gray-500 line-clamp-2 mb-2">
+                        {item.jobDescription.substring(0, 80)}...
+                      </p>
+                      <p className="text-xs text-gray-400">
+                        {new Date(item.timestamp).toLocaleDateString()} {new Date(item.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                      </p>
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
+            <div
+              className="flex-1"
+              onClick={() => setShowHistoryDrawer(false)}
+            />
+          </div>
+        )}
 
         {/* Main Content Area */}
         <main className="flex-1 overflow-y-auto px-6 py-8">
