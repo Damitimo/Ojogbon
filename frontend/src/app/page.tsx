@@ -84,7 +84,19 @@ export default function Home() {
       const res = await fetch(`${API_URL}/api/profiles`);
       const data = await res.json();
       console.log("Profiles loaded:", data.profiles);
-      setProfiles(data.profiles);
+
+      const loadedProfiles: string[] = data.profiles || [];
+      setProfiles(loadedProfiles);
+
+      if (loadedProfiles.length > 0) {
+        const defaultProfile = loadedProfiles.includes("Tech Profile")
+          ? "Tech Profile"
+          : loadedProfiles[0];
+        setCurrentProfile(defaultProfile);
+      } else {
+        setCurrentProfile(null);
+      }
+
       setLoading(false);
     } catch (err) {
       console.error("Failed to load profiles:", err);
