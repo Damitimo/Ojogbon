@@ -327,7 +327,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 flex flex-col">
       {/* Top Navigation Bar */}
       <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div className="w-full px-6">
@@ -423,7 +423,7 @@ export default function Home() {
       </nav>
 
       {/* Main Content with History Sidebar */}
-      <div className="flex h-[calc(100vh-64px)]">
+      <div className="flex flex-1">
         {/* History Sidebar */}
         <aside className="w-80 bg-white border-r border-gray-200 overflow-y-auto">
           <div className="p-4 border-b border-gray-200">
