@@ -82,7 +82,7 @@ export default function Home() {
       setLoading(false);
     } catch (err) {
       console.error("Failed to load profiles:", err);
-      setError("Failed to connect to backend. Make sure backend is running on http://localhost:8000");
+      setError("Failed to connect to backend. Please check that the API is reachable and the environment variable NEXT_PUBLIC_API_URL is set correctly.");
       setLoading(false);
     }
   };

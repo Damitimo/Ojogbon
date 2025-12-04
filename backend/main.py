@@ -17,16 +17,20 @@ from export_handler import ResumeExporter
 # Initialize FastAPI app
 app = FastAPI(title="AI Resume Generator API", version="1.0.0")
 
-# Configure CORS - Allow all localhost origins for development
+"""CORS configuration
+
+We allow localhost for local development and the deployed Vercel frontend.
+If you change the Vercel domain, add it to the list below.
+"""
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:3000",
         "http://127.0.0.1:3000",
-        "http://localhost:*",
-        "http://127.0.0.1:*",
+        # Production frontend on Vercel
+        "https://internship-e6aaye8zp-timothyoojo-1812s-projects.vercel.app",
     ],
-    allow_origin_regex=r"http://localhost:\d+",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
