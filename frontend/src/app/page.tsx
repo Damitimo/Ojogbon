@@ -998,7 +998,6 @@ export default function Home() {
                 <button
                   onClick={saveProfileData}
                   className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors"
-                  disabled={(isNewProfile && !newProfileName.trim()) || (!isNewProfile && !editingProfileName.trim())}
                 >
                   {isNewProfile ? "Create Profile" : "Save Profile"}
                 </button>

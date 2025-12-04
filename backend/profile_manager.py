@@ -75,6 +75,17 @@ class ProfileManager:
     def __init__(self, profiles_dir: str = "profiles"):
         self.profiles_dir = Path(profiles_dir)
         self.profiles_dir.mkdir(exist_ok=True)
+        if not any(self.profiles_dir.glob("*.json")):
+            backup_dir = Path("profiles_backup")
+            if backup_dir.exists():
+                for backup_file in backup_dir.glob("*.json"):
+                    try:
+                        with open(backup_file, "r") as f:
+                            data = json.load(f)
+                        profile = UserProfile(**data)
+                        self.create_profile(backup_file.stem, profile, replace=True)
+                    except Exception:
+                        pass
     
     def create_profile(self, profile_name: str, profile: UserProfile, replace: bool = False) -> tuple[Path, str]:
         """Save a user profile to disk"""
