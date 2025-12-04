@@ -105,7 +105,11 @@ def list_profiles():
     """List all available profiles"""
     try:
         logging.info("=== /api/profiles endpoint called ===")
+        logging.info("BEFORE calling profile_manager.list_profiles()")
+        print(f"DEBUG ENDPOINT: About to call profile_manager.list_profiles(), type={type(profile_manager)}")
         profiles = profile_manager.list_profiles()
+        print(f"DEBUG ENDPOINT: Got result: {profiles}")
+        logging.info(f"AFTER calling profile_manager.list_profiles(), got {len(profiles)} profiles")
         logging.info(f"=== Returning {len(profiles)} profiles: {profiles} ===")
         return {"profiles": profiles}
     except Exception as e:
