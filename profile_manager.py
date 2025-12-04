@@ -75,6 +75,17 @@ class ProfileManager:
     def __init__(self, profiles_dir: str = "profiles"):
         self.profiles_dir = Path(profiles_dir)
         self.profiles_dir.mkdir(exist_ok=True)
+        self._backup_dirs = self._find_backup_dirs()
+
+    def _find_backup_dirs(self) -> list[Path]:
+        """Locate possible profiles_backup directories in different layouts."""
+        base_dir = Path(__file__).resolve().parent
+        candidates = [
+            Path("profiles_backup"),             # when running from repo root
+            base_dir / "profiles_backup",        # when profiles_backup is inside backend
+            base_dir.parent / "profiles_backup"  # when backend/ is the working dir
+        ]
+        return [d for d in candidates if d.exists()]
     
     def create_profile(self, profile_name: str, profile: UserProfile, replace: bool = False) -> tuple[Path, str]:
         """Save a user profile to disk"""
@@ -106,7 +117,14 @@ class ProfileManager:
         """Load a user profile from disk"""
         profile_path = self.profiles_dir / f"{profile_name}.json"
         if not profile_path.exists():
-            raise FileNotFoundError(f"Profile '{profile_name}' not found")
+            # Fallback: try to load from any backup directory
+            for backup_dir in self._backup_dirs:
+                backup_path = backup_dir / f"{profile_name}.json"
+                if backup_path.exists():
+                    profile_path = backup_path
+                    break
+            else:
+                raise FileNotFoundError(f"Profile '{profile_name}' not found")
         
         with open(profile_path, 'r') as f:
             data = json.load(f)
@@ -137,7 +155,16 @@ class ProfileManager:
     
     def list_profiles(self) -> List[str]:
         """List all available profiles"""
-        return [p.stem for p in self.profiles_dir.glob("*.json")]
+        names = [p.stem for p in self.profiles_dir.glob("*.json")]
+        if names:
+            return names
+
+        # Fallback: if no profiles have been created yet, list any backups
+        for backup_dir in self._backup_dirs:
+            backup_names = [p.stem for p in backup_dir.glob("*.json")]
+            if backup_names:
+                return backup_names
+        return []
     
     def delete_profile(self, profile_name: str) -> bool:
         """Delete a profile"""
