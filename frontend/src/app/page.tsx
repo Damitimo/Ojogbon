@@ -32,6 +32,7 @@ export default function Home() {
   const [isNewProfile, setIsNewProfile] = useState(false);
   const [newProfileName, setNewProfileName] = useState("");
   const [editingProfileName, setEditingProfileName] = useState("");
+  const [profileEditorError, setProfileEditorError] = useState<string | null>(null);
 
   useEffect(() => {
     loadProfiles();
@@ -190,23 +191,26 @@ export default function Home() {
     setProfileData(blankProfile);
     setIsNewProfile(true);
     setNewProfileName("");
+    setEditingProfileName("");
+    setProfileEditorError(null);
     setShowProfileEditor(true);
   };
 
   const saveProfileData = async () => {
     const profileName = isNewProfile ? newProfileName : editingProfileName;
     
-    if (!profileName || !profileData) {
-      setError("Please enter a profile name");
+    if (!profileName || !profileName.trim()) {
+      setProfileEditorError("Please enter a profile name");
       return;
     }
 
-    if (!profileName.trim()) {
-      setError("Please enter a profile name");
+    if (!profileData) {
+      setProfileEditorError("Profile data is missing");
       return;
     }
 
     try {
+      setProfileEditorError(null);
       const res = await fetch(`${API_URL}/api/profiles`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -223,6 +227,7 @@ export default function Home() {
       setProfileData(null);
       setNewProfileName("");
       setEditingProfileName("");
+      setProfileEditorError(null);
       setError(null);
       
       // Reload profiles list
@@ -232,9 +237,9 @@ export default function Home() {
       setCurrentProfile(profileName);
       
       alert(`Profile "${profileName}" saved successfully!`);
-    } catch (err) {
+    } catch (err: any) {
       console.error("Save error:", err);
-      setError("Failed to save profile");
+      setProfileEditorError(err?.message || "Failed to save profile");
     }
   };
 
@@ -441,6 +446,7 @@ export default function Home() {
                     setIsNewProfile(false);
                     setNewProfileName("");
                     setEditingProfileName("");
+                    setProfileEditorError(null);
                   }}
                   className="text-gray-400 hover:text-gray-600"
                 >
@@ -470,6 +476,9 @@ export default function Home() {
                     : "Changing the name will create a new profile and keep the old one"
                   }
                 </p>
+                {profileEditorError && (
+                  <p className="text-xs text-red-600 mt-1">{profileEditorError}</p>
+                )}
               </div>
 
               <div className="space-y-6 max-h-[70vh] overflow-y-auto pr-2">
@@ -997,6 +1006,7 @@ export default function Home() {
                     setIsNewProfile(false);
                     setNewProfileName("");
                     setEditingProfileName("");
+                    setProfileEditorError(null);
                   }}
                   className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
                 >
