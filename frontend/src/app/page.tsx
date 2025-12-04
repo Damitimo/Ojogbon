@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { FileText, Sparkles, Download, Edit, Plus, CheckCircle2, AlertCircle, Loader2, Settings, X, Key, History, Clock, Trash2, User, Briefcase, GraduationCap, Rocket, Zap } from "lucide-react";
+import { useState, useEffect, FormEvent } from "react";
+import { FileText, Sparkles, Download, Edit, Plus, CheckCircle2, AlertCircle, Loader2, Settings, X, Key, History, Clock, Trash2, User, Briefcase, GraduationCap, Rocket, Zap, Mail } from "lucide-react";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 const isLocalBackend = API_URL.startsWith("http://localhost") || API_URL.startsWith("http://127.0.0.1");
@@ -26,6 +26,7 @@ export default function Home() {
     jobDescription: string;
     resume: any;
     companyName?: string;
+    profileName: string;
   }>>([]);
   const [showProfileEditor, setShowProfileEditor] = useState(false);
   const [profileData, setProfileData] = useState<any>(null);
@@ -33,6 +34,16 @@ export default function Home() {
   const [newProfileName, setNewProfileName] = useState("");
   const [editingProfileName, setEditingProfileName] = useState("");
   const [profileEditorError, setProfileEditorError] = useState<string | null>(null);
+
+  const [showContactModal, setShowContactModal] = useState(false);
+  const [contactName, setContactName] = useState("");
+  const [contactEmail, setContactEmail] = useState("");
+  const [contactMessage, setContactMessage] = useState("");
+
+  // Filter resume history by currently selected profile so histories don't leak across profiles
+  const profileHistory = currentProfile
+    ? resumeHistory.filter((item) => item.profileName === currentProfile)
+    : [];
 
   useEffect(() => {
     loadProfiles();
@@ -140,7 +151,8 @@ export default function Home() {
         timestamp: new Date(),
         jobDescription: jobDescription,
         resume: data.resume,
-        companyName: extractCompanyName(jobDescription)
+        companyName: extractCompanyName(jobDescription),
+        profileName: currentProfile
       };
       
       setResumeHistory(prev => [historyItem, ...prev]);
@@ -160,6 +172,27 @@ export default function Home() {
       if (match) return match[1];
     }
     return "Company";
+  };
+
+  const handleContactSubmit = (e: FormEvent) => {
+    e.preventDefault();
+
+    const subject = `Ojogbon Contact from ${contactName || "User"}`;
+    const bodyLines = [
+      `Name: ${contactName || "N/A"}`,
+      `Email: ${contactEmail || "N/A"}`,
+      "",
+      "Message:",
+      contactMessage || "",
+    ];
+
+    const mailtoLink = `mailto:timothy.o.ojo@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join("\n"))}`;
+
+    if (typeof window !== "undefined") {
+      window.location.href = mailtoLink;
+    }
+
+    setShowContactModal(false);
   };
 
   const loadProfileData = async (profileName: string) => {
@@ -306,7 +339,7 @@ export default function Home() {
               </div>
               <div>
                 <h1 className="text-xl font-bold text-gray-900">Ojogbon</h1>
-                <p className="text-xs text-gray-500">AI Resume Generator</p>
+                <p className="text-xs text-gray-500">Intelligent Resume Crafting</p>
               </div>
             </div>
 
@@ -401,14 +434,14 @@ export default function Home() {
           </div>
           
           <div className="p-4 space-y-2">
-            {resumeHistory.length === 0 ? (
+            {profileHistory.length === 0 ? (
               <div className="text-center py-12 text-gray-500">
                 <History className="h-12 w-12 mx-auto mb-3 text-gray-300" />
                 <p className="text-sm">No resumes generated yet</p>
                 <p className="text-xs mt-1">Your history will appear here</p>
               </div>
             ) : (
-              resumeHistory.map((item) => (
+              profileHistory.map((item) => (
                 <div
                   key={item.id}
                   onClick={() => {
@@ -1395,6 +1428,103 @@ Then generate a tailored resume that highlights your relevant experience."
         )}
       </main>
       </div>
+
+      {/* Contact Modal */}
+      {showContactModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-xl shadow-2xl max-w-md w-full p-6">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center space-x-2">
+                <div className="bg-blue-100 p-2 rounded-lg">
+                  <Mail className="h-5 w-5 text-blue-600" />
+                </div>
+                <h2 className="text-xl font-semibold">Contact us</h2>
+              </div>
+              <button
+                onClick={() => {
+                  setShowContactModal(false);
+                }}
+                className="text-gray-400 hover:text-gray-600"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            <form onSubmit={handleContactSubmit} className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                <input
+                  type="text"
+                  value={contactName}
+                  onChange={(e) => setContactName(e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                  placeholder="Your name"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                <input
+                  type="email"
+                  value={contactEmail}
+                  onChange={(e) => setContactEmail(e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                  placeholder="you@example.com"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                <textarea
+                  value={contactMessage}
+                  onChange={(e) => setContactMessage(e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm min-h-[120px] resize-none"
+                  placeholder="How can we help?"
+                />
+              </div>
+
+              <div className="flex justify-end space-x-3 pt-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setShowContactModal(false);
+                  }}
+                  className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-2"
+                >
+                  <Mail className="h-4 w-4" />
+                  <span>Send message</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Footer */}
+      <footer className="border-t border-gray-200 bg-white">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 space-y-2 sm:space-y-0">
+          <div>
+            {"\u00a9 2025 Ojogbon"}
+          </div>
+          <div className="text-center sm:text-left">
+            {"AI-generated content \u2014 please review before use."}
+          </div>
+          <button
+            type="button"
+            onClick={() => setShowContactModal(true)}
+            className="inline-flex items-center px-3 py-1.5 rounded-lg border text-xs font-medium text-gray-700 bg-white hover:bg-gray-50 border-gray-300"
+          >
+            <Mail className="h-3 w-3 mr-1.5" />
+            <span>Contact us</span>
+          </button>
+        </div>
+      </footer>
     </div>
   );
 }
