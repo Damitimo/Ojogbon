@@ -19,19 +19,14 @@ app = FastAPI(title="AI Resume Generator API", version="1.0.0")
 
 """CORS configuration
 
-We allow localhost for local development and the deployed Vercel frontend.
-If you change the Vercel domain, add it to the list below.
+For simplicity, allow all origins. This makes the API callable from
+both local development and any deployed frontend (e.g. Vercel).
 """
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-        # Production frontend on Vercel
-        "https://internship-e6aaye8zp-timothyoojo-1812s-projects.vercel.app",
-    ],
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -64,6 +59,12 @@ class ProfileSaveRequest(BaseModel):
 # Helper functions
 def load_api_key() -> Optional[str]:
     """Load API key from config file"""
+    # First, try environment variable (for production on Railway)
+    env_key = os.getenv("CLAUDE_API_KEY")
+    if env_key:
+        return env_key
+
+    # Fallback: local config file (for local development)
     if not CONFIG_FILE.exists():
         return None
     try:
