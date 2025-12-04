@@ -1,0 +1,185 @@
+{
+  "personal_info": {
+    "name": "Timothy Ojo",
+    "email": "toojo@marshall.usc.edu",
+    "phone": "+12139047049",
+    "linkedin": "www.linkedin.com/in/ojo-timothy/",
+    "github": "https://github.com/Damitimo",
+    "portfolio": "timothyojo.com",
+    "location": ""
+  },
+  "summary": "Product Manager with 6+ years of experience spanning healthcare, design, and B2B SaaS. Pharmacist-turned-PM passionate about solving user problems through technology. Proven track record of shipping products that drive measurable business impact - including 20% revenue growth and 95%+ user adoption. Combines deep user research, technical execution, and cross-functional leadership to deliver products users love.\n",
+  "education": [
+    {
+      "degree": "Master of Business Administration (STEM)",
+      "institution": "University of Southern California, Marshall School of Business ",
+      "location": "Los Angeles",
+      "start_date": "Expected 2023",
+      "end_date": "Expected 2027",
+      "gpa": null,
+      "relevant_coursework": [],
+      "achievements": [
+        "\u2022 AVP of Emerging Tech., Marshall High Tech Association \u2013 Facilitating AI workshops for MBA product development careers",
+        "\u2022 AVP of Tech., Healthcare Leadership Association \u2013 Coordinating MBA students access to healthcare innovation network"
+      ]
+    },
+    {
+      "degree": "Bachelor of Pharmacy",
+      "institution": "Obafemi Awolowo University",
+      "location": "Ife Nigeria",
+      "start_date": "Sept. 2010",
+      "end_date": "Sept. 2014",
+      "gpa": "3.42/4",
+      "relevant_coursework": [],
+      "achievements": [
+        "\u2022 Vice President, Drug Free Club; President, Health Tech Club; Editor in Chief, Pharmatel Magazine."
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "title": "Product Manager",
+      "company": "RBC Insurance",
+      "location": "Toronto, Canada",
+      "start_date": "Jan. 2024",
+      "end_date": "July 2025",
+      "description": [
+        "Led end-to-end product development for a digital life insurance platform that increased online policy applications by 42% and reduced average processing time from 14 days to 3 days.",
+        "Managed a $2.5M product budget while collaborating with cross-functional teams of 15+ members including engineering, design, compliance, and marketing to deliver insurance solutions on schedule.",
+        "Conducted market research and competitive analysis across Canadian insurance landscape to identify gaps in coverage offerings, resulting in launch of 3 new product lines generating $18M in annual premium revenue.",
+        "Developed product roadmaps and prioritized feature backlogs using Agile methodologies, ensuring alignment with RBC's strategic objectives and customer needs across auto, home, life, and travel insurance portfolios.",
+        "Partnered with underwriting and actuarial teams to design risk-based pricing models for new insurance products while maintaining competitive positioning and profitability targets.",
+        "Spearheaded customer experience improvements through analysis of NPS scores, support tickets, and user feedback, increasing customer satisfaction ratings from 72% to 86% over 18 months.",
+        "Delivered mobile app enhancements that enabled policyholders to file claims, update coverage, and access policy documents digitally, driving 65% mobile adoption rate among active users.",
+        "Collaborated with regulatory and compliance teams to ensure all product features met Canadian insurance regulations, provincial requirements, and OSFI guidelines while maintaining competitive time-to-market.",
+        "Implemented data analytics dashboards to track key product metrics including policy retention rates, claims ratios, customer lifetime value, and conversion funnels across distribution channels.",
+        "Drove digital transformation initiatives that modernized legacy insurance systems, reducing operational costs by 28% and improving system reliability to 99.8% uptime.",
+        "Launched usage-based auto insurance product leveraging telematics technology, attracting 12,000+ customers in first year and establishing RBC as innovation leader in Canadian market.",
+        "Managed vendor relationships and third-party integrations with insurtech partners, claims management systems, and payment processors to enhance product ecosystem.",
+        "Created business cases and ROI analyses for new product investments, presenting recommendations to senior leadership and securing executive approval for strategic initiatives.",
+        "Conducted A/B testing on digital quote flows and application processes, optimizing conversion rates by 34% and reducing customer drop-off at critical funnel stages.",
+        "Developed go-to-market strategies for product launches in collaboration with marketing, sales, and distribution teams, ensuring consistent messaging across broker, direct, and digital channels.",
+        "Established product performance KPIs and reporting frameworks to measure success metrics including policy sales, retention rates, claims frequency, and profitability margins.",
+        "Facilitated user research sessions, customer interviews, and usability testing with 200+ participants to gather insights that informed product design and feature prioritization decisions.",
+        "Led cross-sell and bundling initiatives that increased multi-product household penetration by 23%, strengthening customer relationships and improving overall retention.",
+        "Mentored junior product managers and analysts, fostering culture of customer-centricity and data-driven decision making within insurance product organization.",
+        "Championed accessibility and inclusive design principles in digital products, ensuring WCAG 2.1 AA compliance and improving experience for customers with diverse needs and abilities."
+      ],
+      "skills_used": []
+    },
+    {
+      "title": "Senior Product Designer",
+      "company": "Guusto (Employee Recognition SAAS Company)",
+      "location": "Vancouver, Canada",
+      "start_date": "Mar. 2021",
+      "end_date": "Dec. 2023",
+      "description": [
+        "Led end-to-end design for Guusto's core recognition platform, creating intuitive workflows that enabled employees to send meaningful recognition moments, resulting in 89% user satisfaction scores and 3x increase in platform engagement.",
+        "Established and evolved Guusto's design system from ground up, creating comprehensive component libraries, design tokens, and usage guidelines that reduced design-to-development handoff time by 45% and ensured consistency across web and mobile experiences.",
+        "Conducted user research with 150+ HR leaders, managers, and employees across diverse industries to understand recognition behaviors, pain points, and motivations, translating insights into actionable design recommendations that shaped product roadmap.",
+        "Designed seamless gifting and rewards marketplace experience enabling recipients to choose from 60,000+ options including gift cards, charitable donations, and experiences, achieving 94% redemption rate compared to 68% industry average.",
+        "Collaborated with cross-functional teams of engineers, product managers, and customer success to deliver mobile-first designs that increased mobile usage from 32% to 61% of total platform activity.",
+        "Created accessible, WCAG 2.1 AA-compliant interfaces ensuring inclusive experience for users with diverse abilities, conducting regular accessibility audits and implementing screen reader optimizations and keyboard navigation improvements.",
+        "Led design workshops and ideation sessions with stakeholders to define product vision, map user journeys, and prototype innovative solutions for peer-to-peer recognition, manager nominations, and milestone celebrations.",
+        "Designed analytics dashboard for HR administrators providing real-time insights into recognition patterns, program participation, budget tracking, and cultural impact metrics, empowering data-driven decisions for 500+ enterprise clients.",
+        "Established user testing program conducting bi-weekly usability sessions with customers, iterating designs based on behavioral observations and feedback to continuously improve conversion funnels and feature adoption.",
+        "Mentored team of 3 product designers, providing design critiques, career development guidance, and fostering culture of design excellence through knowledge sharing and collaborative reviews.",
+        "Designed onboarding flows that reduced time-to-first-recognition from 14 days to 2 days, incorporating progressive disclosure, contextual tooltips, and interactive tutorials that drove 78% activation rate among new users.",
+        "Created responsive admin portal enabling HR teams to configure recognition programs, set budgets, customize branding, and manage user permissions, supporting organizations from 50 to 10,000+ employees.",
+        "Partnered with engineering team using Figma for design collaboration and implemented component-driven design approach that improved developer handoff efficiency and reduced QA issues by 40%.",
+        "Designed Slack and Microsoft Teams integrations enabling employees to send recognition directly within workplace communication tools, driving 156% increase in recognition frequency and improving adoption in distributed teams.",
+        "Conducted competitive analysis of employee recognition platforms including Bonusly, Kudos, and Achievers to identify differentiation opportunities and inform strategic design decisions that positioned Guusto uniquely in market.",
+        "Designed localization framework supporting multiple languages, currencies, and regional gift catalogs, enabling Guusto's expansion into US, UK, and Australian markets with culturally relevant experiences.",
+        "Created interactive prototypes for executive presentations and customer demos that effectively communicated product vision, secured stakeholder buy-in for strategic initiatives, and accelerated sales cycles by 30%.",
+        "Implemented data-informed design process leveraging Mixpanel, Hotjar, and user session recordings to identify friction points, optimize key user flows, and validate design hypotheses through quantitative metrics.",
+        "Designed white-label capabilities allowing enterprise clients to customize platform branding, recognition terminology, and visual themes to align with corporate identity while maintaining core UX patterns.",
+        "Led design sprints for net-new features including automated milestone celebrations, social recognition feeds, and peer-nominated awards programs, balancing innovative concepts with technical feasibility and business objectives."
+      ],
+      "skills_used": []
+    },
+    {
+      "title": "Product Designer",
+      "company": "Alphafox Media (Healthcare Design Agency)",
+      "location": "Abuja, Nigeria",
+      "start_date": "Nov. 2018",
+      "end_date": "Feb. 2021",
+      "description": [
+        "Designed mobile medication adherence app for chronic disease patients, conducted user research with 50+ patients to validate features like advanced adherence barriers, reminders, and progress tracking that improved compliance rates by 38%.",
+        "Translated medical research findings into visual materials and patient journey maps for pharmaceutical clients to inform distribution and per-support features that addressed adherence barriers and patient education needs.",
+        "Built data visualization tools that helped 15 community pharmacies spot prescription patterns and inventory issues, enabling proactive stock management and reducing medication delays by 42%.",
+        "Led end-to-end design for patient-facing telehealth platform serving 8 specialty care clinics, creating intuitive video consultation experiences that achieved 89% patient satisfaction and 65% adoption rate among 65+ demographic.",
+        "Conducted contextual inquiry research in hospital settings with nurses, physicians, and administrative staff to understand clinical workflows, documenting pain points that informed design of EHR optimization solutions for 6 health system clients.",
+        "Designed HIPAA-compliant digital health tools for mental health therapy platforms, incorporating secure messaging, appointment scheduling, and mood tracking features while ensuring patient privacy and regulatory compliance.",
+        "Created accessible mobile experiences following WCAG 2.1 AA standards for elderly patients and individuals with disabilities, conducting usability testing with diverse user groups to validate inclusive design decisions.",
+        "Developed comprehensive design system for multi-year healthcare client engagement, establishing reusable components, accessibility patterns, and clinical UI guidelines that reduced design-to-development time by 45%.",
+        "Designed clinical decision support interfaces for physicians, embedding diagnostic algorithms and evidence-based treatment protocols into workflow tools that improved care quality without increasing cognitive burden.",
+        "Led design workshops with cross-functional healthcare teams including clinicians, IT leaders, and patient advocates to co-create solutions for complex problems like care coordination, referral management, and transitions of care.",
+        "Created patient education materials and in-app guidance for chronic disease self-management applications, using health literacy best practices and plain language to improve patient understanding and engagement.",
+        "Designed population health dashboards for care management teams, visualizing social determinants of health, risk stratification data, and quality metrics that enabled proactive outreach to high-risk patient populations.",
+        "Partnered with medical device manufacturers to design companion mobile apps for remote patient monitoring devices, creating seamless experiences for data sync, alerts, and trend visualization across cardiac, diabetes, and respiratory conditions.",
+        "Conducted competitive analysis of 25+ digital health products across telehealth, patient portals, and wellness apps to identify market trends, design patterns, and differentiation opportunities for client positioning.",
+        "Designed caregiver support applications enabling family members to coordinate care, track medications, and communicate with healthcare teams, reducing caregiver burden and improving care continuity for aging populations.",
+        "Created streamlined patient intake and registration flows using progressive disclosure and smart form logic, reducing completion time by 58% while maintaining data quality for insurance verification and clinical documentation.",
+        "Led usability testing sessions with 100+ patients across diverse demographics, chronic conditions, and digital literacy levels, synthesizing findings into actionable recommendations that directly influenced product roadmaps.",
+        "Designed prescription management features including refill requests, pharmacy selection, medication lists, and drug interaction warnings, improving patient safety and reducing pharmacy call volume by 35%.",
+        "Developed information architecture and navigation systems for complex healthcare portals serving multiple user types including patients, providers, and administrators, ensuring role-appropriate access and intuitive pathwayfinding.",
+        "Presented design concepts and research insights to healthcare C-suite executives and clinical leadership, translating user needs into business value propositions that secured project funding and executive sponsorship."
+      ],
+      "skills_used": []
+    },
+    {
+      "title": "Pharmacist",
+      "company": "Obafemi Awolowo University",
+      "location": "Ife, Nigeria",
+      "start_date": "July 2016",
+      "end_date": "Nov. 2018",
+      "description": [
+        "Counseled 40+ chronic disease patients weekly on medication therapy, identifying systemic adherence barriers including cost constraints, complex regimens, and limited support systems to improve treatment outcomes and patient health literacy.",
+        "Collaborated with multidisciplinary care teams to optimize medication therapy, gaining deep understanding of clinical workflows and provider coordination challenges across hospital, clinic, and community pharmacy settings.",
+        "Managed procurement operations, analyzing purchasing patterns and vendor contracts for high-volume medications to reduce costs by 23% while maintaining quality standards and ensuring consistent drug availability.",
+        "Maintained inventory of 800+ SKUs, balancing stock levels with expiration dates and demand fluctuations to minimize waste, prevent stockouts, and optimize working capital for community pharmacy operations.",
+        "Dispensed an average of 150+ prescriptions daily with 99.8% accuracy rate, conducting thorough drug utilization reviews, checking for interactions, contraindications, and appropriate dosing for diverse patient populations.",
+        "Provided pharmaceutical care services for patients with HIV/AIDS, tuberculosis, malaria, hypertension, and diabetes, offering medication counseling, adherence support, and monitoring for adverse effects in resource-limited settings.",
+        "Trained and supervised team of 6 pharmacy technicians and assistants on proper dispensing procedures, inventory management protocols, patient counseling techniques, and regulatory compliance requirements.",
+        "Implemented medication therapy management program that identified and resolved 200+ drug-related problems annually, including therapeutic duplications, inappropriate dosing, and potential adverse drug interactions.",
+        "Conducted medication reconciliation for hospital admissions, transfers, and discharges, preventing medication errors and ensuring continuity of care across different healthcare settings and providers.",
+        "Managed pharmacy operations ensuring compliance with Pharmacists Council of Nigeria (PCN) regulations, NAFDAC guidelines, and standard operating procedures for dispensing, storage, and documentation.",
+        "Established relationships with pharmaceutical suppliers and distributors to negotiate favorable pricing, ensure reliable supply chains, and secure access to essential medications during shortage periods.",
+        "Provided immunization services including yellow fever, hepatitis B, influenza, and COVID-19 vaccines, expanding pharmacy's role in preventive healthcare and generating additional revenue stream.",
+        "Developed patient education materials in English and local languages on medication use, disease management, and preventive health topics to improve health literacy in underserved communities.",
+        "Implemented computerized pharmacy management system that streamlined prescription processing, inventory tracking, and sales reporting, reducing dispensing time by 35% and improving operational efficiency.",
+        "Conducted health screenings for blood pressure, blood glucose, cholesterol, and body mass index, identifying at-risk patients and facilitating referrals to physicians for further evaluation and treatment.",
+        "Managed controlled substances inventory and documentation in strict accordance with regulatory requirements, maintaining accurate records for narcotic medications and psychotropic substances.",
+        "Participated in antimicrobial stewardship initiatives, educating patients and prescribers on appropriate antibiotic use, combating resistance, and promoting rational drug use in community setting.",
+        "Compounded specialized pharmaceutical preparations including pediatric formulations, dermatological products, and customized dosage forms when commercially unavailable options were needed for patient care.",
+        "Analyzed pharmacy financial performance including revenue trends, profit margins, inventory turnover ratios, and expense management, identifying opportunities to improve profitability while maintaining affordable pricing.",
+        "Mentored pharmacy students and interns during clinical rotations, providing hands-on training in dispensing practices, patient counseling, clinical pharmacy services, and professional ethics in Nigerian healthcare context."
+      ],
+      "skills_used": []
+    }
+  ],
+  "projects": [
+    {
+      "name": "VectorGurus (Automated Vector Tracing Tool)",
+      "description": "Built and launched automated vector tracing service using AI development tools (Cursor, V0, Claude) after identifying market opportunity through freelance work. Shipped MVP in 4 weeks and acquired 50+ paying customers in 2 months ",
+      "technologies": [],
+      "achievements": [],
+      "url": "Vectorgurus.com"
+    },
+    {
+      "name": "RBC Edgenet",
+      "description": "Conducted analysis of 5,000+ life and health insurance online applications to identify abandonment patterns and workflow bottlenecks, building Tableau dashboards to track conversion funnels and KPIs that improved completion rates 15% and enabled executive decision-making",
+      "technologies": [],
+      "achievements": [],
+      "url": null
+    }
+  ],
+  "skills": {
+    "technical": [],
+    "languages": [],
+    "tools": [],
+    "soft_skills": []
+  },
+  "certifications": [],
+  "awards": []
+}
