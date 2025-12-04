@@ -100,15 +100,8 @@ export default function Home() {
 
       const loadedProfiles: string[] = data.profiles || [];
       setProfiles(loadedProfiles);
-
-      if (loadedProfiles.length > 0) {
-        const defaultProfile = loadedProfiles.includes("Tech Profile")
-          ? "Tech Profile"
-          : loadedProfiles[0];
-        setCurrentProfile(defaultProfile);
-      } else {
-        setCurrentProfile(null);
-      }
+      // Do not auto-select any profile by default so new users start with an empty selection.
+      setCurrentProfile(null);
 
       setLoading(false);
     } catch (err) {
