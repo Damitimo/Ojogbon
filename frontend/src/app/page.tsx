@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { FileText, Sparkles, Download, Edit, Plus, CheckCircle2, AlertCircle, Loader2, Settings, X, Key, History, Clock, Trash2, User, Briefcase, GraduationCap, Rocket, Zap } from "lucide-react";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+const isLocalBackend = API_URL.startsWith("http://localhost") || API_URL.startsWith("http://127.0.0.1");
 
 export default function Home() {
   const [profiles, setProfiles] = useState<string[]>([]);
@@ -34,7 +35,11 @@ export default function Home() {
 
   useEffect(() => {
     loadProfiles();
-    checkApiKey();
+    if (isLocalBackend) {
+      checkApiKey();
+    } else {
+      setApiKeyConfigured(true);
+    }
   }, []);
 
   const checkApiKey = async () => {
@@ -347,17 +352,19 @@ export default function Home() {
                     <span>New Profile</span>
                   </button>
 
-                  {/* Settings Button */}
-                  <button
-                    onClick={() => setShowApiKeyModal(true)}
-                    className="h-10 px-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 flex items-center transition-colors relative"
-                    title="API Settings"
-                  >
-                    <Settings className="h-4 w-4" />
-                    {!apiKeyConfigured && (
-                      <div className="absolute -top-1 -right-1 h-3 w-3 bg-red-500 rounded-full border-2 border-white"></div>
-                    )}
-                  </button>
+                  {/* Settings Button (local development only) */}
+                  {isLocalBackend && (
+                    <button
+                      onClick={() => setShowApiKeyModal(true)}
+                      className="h-10 px-3 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 flex items-center transition-colors relative"
+                      title="API Settings"
+                    >
+                      <Settings className="h-4 w-4" />
+                      {!apiKeyConfigured && (
+                        <div className="absolute -top-1 -right-1 h-3 w-3 bg-red-500 rounded-full border-2 border-white"></div>
+                      )}
+                    </button>
+                  )}
                 </>
               )}
             </div>
@@ -1006,8 +1013,8 @@ export default function Home() {
           </div>
         )}
 
-        {/* API Key Modal */}
-        {showApiKeyModal && (
+        {/* API Key Modal (local development only) */}
+        {isLocalBackend && showApiKeyModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
             <div className="bg-white rounded-xl shadow-2xl max-w-md w-full p-6">
               <div className="flex items-center justify-between mb-4">
@@ -1168,8 +1175,8 @@ export default function Home() {
           </div>
         )}
 
-        {/* API Key Warning */}
-        {!apiKeyConfigured && (
+        {/* API Key Warning (local development only) */}
+        {isLocalBackend && !apiKeyConfigured && (
           <div className="bg-yellow-50 border border-yellow-200 text-yellow-800 px-4 py-3 rounded-lg mb-4 flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <AlertCircle className="h-5 w-5" />
