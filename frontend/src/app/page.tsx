@@ -330,8 +330,8 @@ export default function Home() {
     <div className="min-h-screen bg-gray-50 flex flex-col">
       {/* Top Navigation Bar */}
       <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div className="w-full px-6">
-          <div className="flex items-center justify-between h-16">
+        <div className="w-full px-4 sm:px-6">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between py-3 sm:h-16 space-y-3 sm:space-y-0">
             {/* Left: Logo & Title */}
             <div className="flex items-center space-x-3">
               <div className="bg-gradient-to-br from-blue-600 to-purple-600 p-2 rounded-lg">
@@ -344,7 +344,7 @@ export default function Home() {
             </div>
 
             {/* Right: Profile Controls */}
-            <div className="flex items-center space-x-3 ml-auto">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3 sm:ml-auto w-full sm:w-auto justify-start sm:justify-end">
               {loading ? (
                 <div className="text-sm text-gray-500">Loading...</div>
               ) : (
@@ -423,9 +423,9 @@ export default function Home() {
       </nav>
 
       {/* Main Content with History Sidebar */}
-      <div className="flex flex-1">
+      <div className="flex flex-col lg:flex-row flex-1">
         {/* History Sidebar */}
-        <aside className="w-80 bg-white border-r border-gray-200 overflow-y-auto">
+        <aside className="w-full lg:w-80 bg-white border-b lg:border-b-0 lg:border-r border-gray-200 overflow-y-auto">
           <div className="p-4 border-b border-gray-200">
             <div className="flex items-center space-x-2">
               <History className="h-5 w-5 text-gray-600" />
