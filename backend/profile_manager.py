@@ -162,6 +162,8 @@ class ProfileManager:
     
     def list_profiles(self) -> List[str]:
         """List all available profiles"""
+        print(f"DEBUG: list_profiles called, profiles_dir={self.profiles_dir}, backup_dirs={len(self._backup_dirs)}")
+        logging.info(f"DEBUG START: list_profiles method entered")
         names = [p.stem for p in self.profiles_dir.glob("*.json")]
         logging.info(f"list_profiles: found {len(names)} in {self.profiles_dir}: {names}")
         if names:
