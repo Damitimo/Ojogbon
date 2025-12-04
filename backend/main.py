@@ -8,11 +8,18 @@ from pydantic import BaseModel
 from typing import List, Optional, Dict
 import json
 import os
+import logging
 from pathlib import Path
 
 from profile_manager import ProfileManager, UserProfile
 from resume_generator import ResumeGenerator
 from export_handler import ResumeExporter
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
 
 # Initialize FastAPI app
 app = FastAPI(title="AI Resume Generator API", version="1.0.0")
