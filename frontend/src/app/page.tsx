@@ -952,6 +952,23 @@ export default function Home() {
                           className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                       </div>
+                      <div className="mt-3">
+                        <label className="block text-xs font-medium text-gray-600 mb-1">Achievements (one per line)</label>
+                        <textarea
+                          placeholder={"• AVP of Emerging Tech., Marshall High Tech Association\n• AVP of Tech., Healthcare Leadership Association"}
+                          value={edu.achievements?.join('\n') || ""}
+                          onChange={(e) => {
+                            const newEdu = [...profileData.education];
+                            newEdu[idx].achievements = e.target.value
+                              .split('\n')
+                              .map((line: string) => line.trim())
+                              .filter((line: string) => line.length > 0);
+                            setProfileData({ ...profileData, education: newEdu });
+                          }}
+                          rows={3}
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                      </div>
                     </div>
                   ))}
                 </div>
