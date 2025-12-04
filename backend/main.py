@@ -104,9 +104,12 @@ def read_root():
 def list_profiles():
     """List all available profiles"""
     try:
+        logging.info("=== /api/profiles endpoint called ===")
         profiles = profile_manager.list_profiles()
+        logging.info(f"=== Returning {len(profiles)} profiles: {profiles} ===")
         return {"profiles": profiles}
     except Exception as e:
+        logging.error(f"Error in list_profiles: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
 
 
